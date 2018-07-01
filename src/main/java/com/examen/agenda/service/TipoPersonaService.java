@@ -18,11 +18,10 @@ public class TipoPersonaService {
 
     public List<TipoPersonaDTO> getTiposPersona(){
     	
-    	List<CatTipoPersona> lstCatTipoPersona = tipoPersonaRepository.findByNameComplete("%%");
+    	List<TipoPersonaDTO> lstCatTipoPersona = tipoPersonaRepository.findAllDto();
     	
-    	System.out.println("***************************" + lstCatTipoPersona.size());
 
-        return null;
+        return lstCatTipoPersona;
     }
 
 public Integer getPrueba(){

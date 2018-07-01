@@ -63,6 +63,18 @@ public class ContactoController {
         return tipoPersonaService.getTiposPersona();
     }
 
+    @ApiOperation(value = "getAllTipoPersona", produces="application/json")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = Object.class),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 500, message = "Internal server error")
+    })
+    @RequestMapping(value = "/getAllTipoPersona", method = RequestMethod.GET)
+    public Object getAllTipoPersona() throws Exception {
+
+
+        return tipoPersonaService.getTiposPersona();
+    }
 
     @ApiOperation(value = "delete", produces="application/json")
     @ApiResponses(value = {
