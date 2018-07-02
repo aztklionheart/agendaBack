@@ -78,4 +78,9 @@ public class PersonaService {
 
 	}
 
+	public List<OPersona> findByTipoPersona(Integer idTipo) {
+		
+		return personaRepository.findByCatTipoPersonaIdTipoPersona(idTipo);
+	}
+
 }

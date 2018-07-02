@@ -1,15 +1,13 @@
 package com.examen.agenda.controller;
 
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,11 +16,11 @@ import com.examen.agenda.domain.EmpresaDTO;
 import com.examen.agenda.domain.PersonaDTO;
 import com.examen.agenda.service.EmpresaService;
 import com.examen.agenda.service.PersonaService;
-import com.examen.agenda.service.TipoPersonaService;
 
-import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("autocomplete")

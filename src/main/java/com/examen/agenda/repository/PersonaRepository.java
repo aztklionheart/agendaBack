@@ -16,4 +16,6 @@ public interface PersonaRepository extends JpaRepository<OPersona, Integer> {
 			+ "OR segundoAp like :query")
 	List<OPersona> autocomplete(@Param("query")String query);
 
+	List<OPersona> findByCatTipoPersonaIdTipoPersona(Integer idTipo);
+
 }

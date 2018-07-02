@@ -1,5 +1,8 @@
 package com.examen.agenda.helper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.examen.agenda.domain.AreaDTO;
 import com.examen.agenda.domain.EmpresaDTO;
 import com.examen.agenda.domain.PersonaDTO;
@@ -28,8 +31,11 @@ public class PersonaHelper {
 	public static PersonaEmpresaDTO pojoToDto(PersonaDTO dtoPersona, OPersonaEmpresa pojoPersonaEmpresa){
 		PersonaEmpresaDTO dto = new PersonaEmpresaDTO();
 		if(pojoPersonaEmpresa!=null){
-			dto.setAreaDTO(pojoToDto(pojoPersonaEmpresa.getCatArea()));
 			dto.setEmpresaDTO(pojoToDto(pojoPersonaEmpresa.getCatEmpresa()));
+			if(pojoPersonaEmpresa.getCatArea()!=null){
+				dto.setAreaDTO(pojoToDto(pojoPersonaEmpresa.getCatArea()));
+				
+			}
 		}
 		dto.setPersonaDTO(dtoPersona);
 		return dto;
@@ -51,5 +57,21 @@ public class PersonaHelper {
 		dto.setNombreArea(pojo.getNombreArea());
 		
 		return dto;
+	}
+	
+	public static List<PersonaEmpresaDTO> pojoToDtoList(List<OPersona> listPersona, List<OPersonaEmpresa> listPersonaEmpresa){
+		List<PersonaEmpresaDTO> listDto = new ArrayList<>();
+		if(listPersonaEmpresa!=null && !listPersonaEmpresa.isEmpty()){
+			for (OPersonaEmpresa oPersona : listPersonaEmpresa) {
+				listDto.add(pojoToDto(pojoToDto(oPersona.getOPersona()),oPersona));
+			}
+		}else{
+			for (OPersona oPersona : listPersona) {
+				listDto.add(pojoToDto(pojoToDto(oPersona),null));
+			}
+			
+		}
+		
+		return listDto;
 	}
 }

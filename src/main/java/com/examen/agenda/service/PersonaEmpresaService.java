@@ -16,7 +16,6 @@ import com.examen.agenda.model.OPersona;
 import com.examen.agenda.model.OPersonaEmpresa;
 import com.examen.agenda.model.OPersonaEmpresaId;
 import com.examen.agenda.repository.PersonaEmpresaRepository;
-import com.examen.agenda.repository.PersonaRepository;
 
 @Service
 public class PersonaEmpresaService {
@@ -32,6 +31,8 @@ public class PersonaEmpresaService {
 
 	@Autowired
 	private AreaService areaService;
+
+	final static Integer TIPO_PERSONA_EMPRESA = 3;
 
 	public void add(PersonaEmpresaDTO personaEmpresaDTO) {
 
@@ -98,16 +99,29 @@ public class PersonaEmpresaService {
 		OPersonaEmpresa personaEmpresa = null;
 
 		PersonaDTO persona = personaService.findById(idPersona);
-		Integer tipoEmpresa = 3;
 
 		/** si el tipo de persona es 3 se busca la empresa */
-		if (persona.getIdTipoPersona().equals(tipoEmpresa)) {
+		if (persona.getIdTipoPersona().equals(TIPO_PERSONA_EMPRESA)) {
 
 			personaEmpresa = personaEmpresaRepository.findByIdIdPersona(idPersona);
 		}
 		personaEmpresaDto = PersonaHelper.pojoToDto(persona, personaEmpresa);
-		
+
 		return personaEmpresaDto;
+	}
+
+	public List<PersonaEmpresaDTO> findByTipoPersonaId(Integer idTipo) {
+
+		List<OPersonaEmpresa> listPersonaEmpresa = new ArrayList<>();
+		List<OPersona> listPersona = personaService.findByTipoPersona(idTipo);
+
+		/** si el tipo de persona es 3 se busca la empresa */
+		if (idTipo.equals(TIPO_PERSONA_EMPRESA) && !listPersona.isEmpty()) {
+			listPersonaEmpresa = personaEmpresaRepository.findByIdTipoPersona(idTipo);
+
+		}
+
+		return PersonaHelper.pojoToDtoList(listPersona, listPersonaEmpresa);
 	}
 
 }
