@@ -10,9 +10,6 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 public class PersonaEmpresaDTO {
 
-	@ApiModelProperty(position = 1, required = false, value = "Id PersonaEmpresa")
-	private PersonaEmpresaIdDTO id;
-	
 	
 	@ApiModelProperty(position = 2, required = false, value = "Area")
 	private AreaDTO areaDTO;
@@ -27,20 +24,11 @@ public class PersonaEmpresaDTO {
 	public PersonaEmpresaDTO() {
 	}
 
-	public PersonaEmpresaDTO(PersonaEmpresaIdDTO id, AreaDTO catEmpresa, PersonaDTO personaDTO) {
-		this.setId(id);
+	public PersonaEmpresaDTO( AreaDTO catEmpresa, PersonaDTO personaDTO) {
 		this.setEmpresaDTO(getEmpresaDTO());
 		this.setPersonaDTO(personaDTO);
 	}
 
-
-	public PersonaEmpresaIdDTO getId() {
-		return id;
-	}
-
-	public void setId(PersonaEmpresaIdDTO id) {
-		this.id = id;
-	}
 
 	public AreaDTO getAreaDTO() {
 		return areaDTO;
