@@ -48,19 +48,16 @@ public class ContactoController {
 	}
 
 
-    @ApiOperation(value = "tipoPersona", produces="application/json")
+    @ApiOperation(value = "getPersona", produces="application/json")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = Object.class),
             @ApiResponse(code = 400, message = "Bad Request"),
             @ApiResponse(code = 500, message = "Internal server error")
     })
-    @RequestMapping(value = "/tipoPersona/{query}", method = RequestMethod.GET)
-    public Object query(@PathVariable("query") String query ) throws Exception {
+    @RequestMapping(value = "/getPersona/{id}", method = RequestMethod.GET)
+    public Object getPersona(@PathVariable("id") Integer id ) throws Exception {
 
-
-        logger.debug("sql: " + query );
-
-        return tipoPersonaService.getTiposPersona();
+        return personaService.findById(id);
     }
 
     @ApiOperation(value = "getAllTipoPersona", produces="application/json")

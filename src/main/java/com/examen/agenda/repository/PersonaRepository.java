@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.examen.agenda.model.OPersona;
 
-public interface PersonaRepository extends JpaRepository<OPersona, Object> {
+public interface PersonaRepository extends JpaRepository<OPersona, Integer> {
 	
 	@Query("from OPersona where "
 			+ "nombre like :query "

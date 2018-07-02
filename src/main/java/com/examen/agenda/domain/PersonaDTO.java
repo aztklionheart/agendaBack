@@ -13,8 +13,8 @@ public class PersonaDTO {
 	private Integer idPersona;
 
 	@NotNull(message = "no puede ser null")
-	@ApiModelProperty(position = 2, required = true, value = "Tipo de persona")
-	private TipoPersonaDTO tipoPersonaDTO;
+	@ApiModelProperty(position = 2, required = true, value = "Id Tipo de persona")
+	private  Integer idTipoPersona;
 
 	@NotNull(message = "no puede ser null")
 	@ApiModelProperty(position = 3, required = true, value = "Nombre de la persona")
@@ -41,10 +41,10 @@ public class PersonaDTO {
 	public PersonaDTO() {
 	}
 
-	public PersonaDTO(Integer idPersona, TipoPersonaDTO tipoPersonaDTO, String nombre, String primerAp, String segundoAp,
+	public PersonaDTO(Integer idPersona, Integer idTipoPersona, String nombre, String primerAp, String segundoAp,
                       String telefono) {
 		this.idPersona = idPersona;
-		this.tipoPersonaDTO = tipoPersonaDTO;
+		this.idTipoPersona = idTipoPersona;
 		this.nombre = nombre;
 		this.primerAp = primerAp;
 		this.segundoAp = segundoAp;
@@ -59,12 +59,13 @@ public class PersonaDTO {
 		this.idPersona = idPersona;
 	}
 
-	public TipoPersonaDTO getCatTipoPersona() {
-		return this.tipoPersonaDTO;
+	
+	public Integer getIdTipoPersona() {
+		return idTipoPersona;
 	}
 
-	public void setCatTipoPersona(TipoPersonaDTO tipoPersonaDTO) {
-		this.tipoPersonaDTO = tipoPersonaDTO;
+	public void setIdTipoPersona(Integer idTipoPersona) {
+		this.idTipoPersona = idTipoPersona;
 	}
 
 	public String getNombre() {
